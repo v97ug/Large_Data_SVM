@@ -15,10 +15,13 @@ main :: IO ()
 main = do
   fileNames <- getArgs
   -- if length fileNames == 0 then
-  documents <- sequence $ fmap readFile fileNames
+  -- documents <- sequence $ fmap readFile fileNames
+  strings <- readFile (head fileNames) -- １つのファイルを読み込み、１行が１ドキュメントとなる
 
-  let n = length fileNames
-      splitWords = map (concatMap words . lines) documents :: [[String]]
+  let documents = lines strings :: [Document]
+      splitWords = fmap words documents :: [[String]]
+      n = length documents
+      -- splitWords = map (concatMap words . lines) documents :: [[String]]
       tf = calTF splitWords :: [Map.Map String Int]
       df = calDF tf :: [(String, Int)]
       featureVectors = calFeatureVecors n tf df :: [Vector]
