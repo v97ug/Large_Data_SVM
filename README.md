@@ -2,7 +2,7 @@
 より大きなデータを扱うSVM
 
 ## 概要
-input/pos以下と、input/neg以下にあるファイルを、SVMが学習し、それらを分類する。
+input/以下にあるファイルを、SVMが学習し、それらを分類する。
 
 
 ## 使い方
@@ -10,4 +10,4 @@ input/pos以下と、input/neg以下にあるファイルを、SVMが学習し�
 $ ruby convert_vector__and_classify.rb
 ```
 で、実行可能
-入力ファイルは、input/posと、input/neg以下に置けばよい
+入力ファイルは、input/以下に置き、そのファイル名を、convert_vector__and_classify.rbに記述する
