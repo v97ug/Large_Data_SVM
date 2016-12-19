@@ -3,8 +3,8 @@ neg_file_pass = 'input/neg/'
 pos_file_names = `ls #{pos_file_pass}`.split("\n").map { |name| pos_file_pass + name }.join(' ')
 neg_file_names = `ls #{neg_file_pass}`.split("\n").map { |name| neg_file_pass + name }.join(' ')
 
-system("runhaskell MainPos.hs #{pos_file_names}")
-system("runhaskell MainNeg.hs #{neg_file_names}")
+system("./MainPos #{pos_file_names}")
+system("./MainNeg #{neg_file_names}")
 
 svm_light_pass = 'svm_light/'
 Dir.chdir(svm_light_pass) do
