@@ -1,9 +1,10 @@
 # Large_Data_SVM
-より大きなデータを扱うSVM
+より大きなデータを扱うSVM(Support Vector Machine)
 
 ## 概要
 input/以下にあるファイルを、SVMが学習し、それらを分類する。
-
+src/以下には、Haskellのファイルがあるが、それは、TFIDFのアルゴリズムを使ってSVMに適用するファイルを生成する。
+SVMは、svm_lightのlinux版を使用している。
 
 ## 使い方
 ```shell
