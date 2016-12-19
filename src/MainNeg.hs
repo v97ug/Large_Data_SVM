@@ -1,6 +1,6 @@
 module Main where
 
-import System.IO
+-- import System.IO
 import System.Environment
 import qualified Data.Map as Map
 
@@ -15,11 +15,10 @@ main :: IO ()
 main = do
   fileNames <- getArgs
   -- if length fileNames == 0 then
-  strings <- readFile (head fileNames) -- １つのファイルを読み込み、１行が１ドキュメントとなる
+  documents <- sequence $ fmap readFile fileNames
 
-  let documents = lines strings :: [Document]
-      splitWords = fmap words documents :: [[String]]
-      n = length documents
+  let n = length fileNames
+      splitWords = map (concatMap words . lines) documents :: [[String]]
       tf = calTF splitWords :: [Map.Map String Int]
       df = calDF tf :: [(String, Int)]
       featureVectors = calFeatureVecors n tf df :: [Vector]
