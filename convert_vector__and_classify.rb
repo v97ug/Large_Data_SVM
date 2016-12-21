@@ -12,10 +12,11 @@ pos_learn_file = 'posLearn.txt'
 neg_learn_file = 'negLearn.txt'
 pos_test_file = 'posTest.txt'
 neg_test_file = 'negTest.txt'
-system("./Main +1 #{pos_file_names} > #{svm_light_pass}#{pos_learn_file}")
-system("./Main -1 #{neg_file_names} > #{svm_light_pass}#{neg_learn_file}")
-system("./Main +1 #{pos_test_names} > #{svm_light_pass}#{pos_test_file}")
-system("./Main -1 #{neg_test_names} > #{svm_light_pass}#{neg_test_file}")
+exe_file = 'Main'
+system("./#{exe_file} +1 #{pos_file_names} > #{svm_light_pass}#{pos_learn_file}")
+system("./#{exe_file} -1 #{neg_file_names} > #{svm_light_pass}#{neg_learn_file}")
+system("./#{exe_file} +1 #{pos_test_names} > #{svm_light_pass}#{pos_test_file}")
+system("./#{exe_file} -1 #{neg_test_names} > #{svm_light_pass}#{neg_test_file}")
 
 Dir.chdir(svm_light_pass) do
     learn_file = 'allLearn.txt'
