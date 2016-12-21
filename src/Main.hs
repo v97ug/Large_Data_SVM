@@ -8,8 +8,11 @@ import Type
 import qualified Data.ByteString.Lazy.Char8 as B
 
 -- 表示用の形式にする
-eachVectorToShow :: String -> [(Int, Double)]  -> String
-eachVectorToShow classifyValue tupleArr = classifyValue ++ " " ++ unwords (map (\x -> show (fst x) ++ ":" ++ show (snd x)) tupleArr)
+-- 例：　+1 2:0.1232131 5:0.99123
+eachVectorToShow :: B.ByteString -> [(Int, Double)]  -> B.ByteString
+eachVectorToShow classifyValue tupleArr =
+  classifyValue `B.append` B.pack " " `B.append`
+  B.unwords (fmap (\x -> B.pack (show (fst x) ++ ":" ++ show (snd x))) tupleArr)
 
 main :: IO ()
 main = do
@@ -30,5 +33,5 @@ main = do
       featureVectors = calFeatureVecors n tf df :: [Vector]
       indexVectors = map (zip [1..]) featureVectors :: [[(Int, Double)]]
       not0Vectors = map (filter (\x -> snd x > 0)) indexVectors :: [[(Int, Double)]]
-      resultStrs = unlines $ map (eachVectorToShow classifyValue) not0Vectors
-  putStr resultStrs
+      resultStrs = B.unlines $ fmap (eachVectorToShow (B.pack classifyValue)) not0Vectors
+  B.putStr resultStrs
