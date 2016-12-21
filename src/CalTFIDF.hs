@@ -5,7 +5,7 @@ import qualified Data.Map as Map
 import Data.Maybe
 import Control.Arrow
 import Data.List
-import qualified Data.ByteString.Lazy.Char8 as B
+import qualified Data.ByteString.Char8 as B
 
 calTFIDF :: Int -> Int -> Int -> Double
 calTFIDF n tf df =

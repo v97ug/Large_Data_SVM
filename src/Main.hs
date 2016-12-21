@@ -5,7 +5,7 @@ import qualified Data.Map as Map
 
 import CalTFIDF
 import Type
-import qualified Data.ByteString.Lazy.Char8 as B
+import qualified Data.ByteString.Char8 as B
 
 -- 表示用の形式にする
 -- 例：　+1 2:0.1232131 5:0.99123
